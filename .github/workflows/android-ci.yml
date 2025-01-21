@@ -34,3 +34,14 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew assembleRelease
+
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+
+      - name: Upload APK to Firebase App Distribution
+        run: |
+          firebase appdistribution:distribute app/build/outputs/apk/release/app-release.apk \
+            --app ${{ secrets.APP_ID }} \
+            --release-notes "Release test1" \
+            --testers-file testers.txt \
+            --token "${{ secrets.FIREBASE_TOKEN }}"
