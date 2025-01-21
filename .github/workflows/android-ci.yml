@@ -38,8 +38,13 @@ jobs:
       - name: Upload Proguard mapping
         uses: actions/upload-artifact@v4
         with:
-          name: code-coverage-report
+          name: proguard mapping files
           path: app/build/outputs/mapping/release
+
+      - name: Construct Artifact URL
+        run: |
+          echo "Mapping files can be found here:" >> release_notes.md
+          echo "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> release_notes.md
 
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
