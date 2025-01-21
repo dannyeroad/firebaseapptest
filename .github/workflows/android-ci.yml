@@ -44,4 +44,4 @@ jobs:
             --app ${{ secrets.APP_ID }} \
             --release-notes "Release test1" \
             --testers-file testers.txt \
-            --token "${{ secrets.FIREBASE_TOKEN }}"
+            --token "${{ secrets.FIREBASE_RELEASE_TOKEN }}"
